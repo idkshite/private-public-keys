@@ -1,7 +1,9 @@
 const crypto = require('crypto');
 const {PUBLIC_KEY_PAVEL, PRIVATE_KEY_PAVEL} = require("./keys.js");
-
-const encryptedMessage = encrypt(PUBLIC_KEY_PAVEL, "hello");
+const topSecretPlaylist = "dancingqueen, whatsdoesthefoxsay, ymca";
+console.log("to be encrypted: ", topSecretPlaylist);
+const encryptedMessage = encrypt(PUBLIC_KEY_PAVEL,topSecretPlaylist);
+console.log("encrypted: ",encryptedMessage);
 const decryptedMessage = decrypt(PRIVATE_KEY_PAVEL, encryptedMessage);
 console.log(decryptedMessage.toString("utf8"));
 
