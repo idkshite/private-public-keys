@@ -6,16 +6,16 @@ const topSecretPlaylist = "dancingqueen, whatsdoesthefoxsay, ymca";
 prettyLog("You sign with your private key: ",topSecretPlaylist,green);
 
 const signature = sign(PRIVATE_KEY_YOU,topSecretPlaylist);
-prettyLog("signature: ",signature,red);
+prettyLog("creates signature: ",signature,red);
 
 const decryptedMessage = verify(PUBLIC_KEY_YOU, signature, topSecretPlaylist);
 prettyLog("Mathilda verifies message with your public key: ",decryptedMessage,green);
 
-export function sign(key, message) {
+function sign(key, message) {
     return crypto.sign('sha256', Buffer.from(message), key).toString('base64');
 }
 
-export function verify(key, signature, toBeVerfiedData) {
+function verify(key, signature, toBeVerfiedData) {
     const signature_buffer = Buffer.from(signature, 'base64');
     const content_buffer = Buffer.from(toBeVerfiedData);
     return crypto.verify('sha256', content_buffer, key, signature_buffer);
