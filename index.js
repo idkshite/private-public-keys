@@ -20,8 +20,3 @@ function verify(key, signature, toBeVerfiedData) {
     const content_buffer = Buffer.from(toBeVerfiedData);
     return crypto.verify('sha256', content_buffer, key, signature_buffer);
 }
-
-module.exports = {
-    sign,
-    verify
-}
